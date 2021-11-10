@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  portalUrl: string;
+  portalName: string;
+
+  courses: string[] = ['java', 'angular', 'react', 'vue', 'c++']
+
+  constructor() {
+    this.portalUrl = 'https://digitalinnovation.one/'
+    this.portalName = 'digital innovation'
+  }
 
   ngOnInit(): void {
   }
