@@ -10,7 +10,7 @@ export class CoursesComponent implements OnInit {
   portalUrl: string;
   portalName: string;
 
-  courses: string[] = ['java', 'angular', 'react', 'vue', 'c++']
+  courses: string[] = ['java', 'angular', 'react', 'vue', 'c++', 'php']
 
   constructor() {
     this.portalUrl = 'https://digitalinnovation.one/'
