@@ -15,7 +15,7 @@
         <img bind-src="urlImage" alt="nature">
     </article> -->
 
-    <article>
+    <!-- <article>
         <h3>Class e Style Binding</h3>
         <div>Selecione uma classe</div>
         <select #classe (change)="0">
@@ -52,6 +52,29 @@
             danger!
         </div>
 
+    </article> -->
+
+    <article>
+        <h3>Eventy binding</h3>
+        <div>
+            <button class="btn btn-primary" (click)="buttonClick()">Click</button>
+        </div>
+        <br>
+        <p>valor: {{ eventValue }}</p>
+        <p>valorSalvo: {{ savedValue }}</p>
+        <input type="text"
+            (keyup)="onKeyUp($event)"
+            (keyup.enter)="saveValue((campoInput.value))"
+            (blur)="saveValue((campoInput.value))"
+            #campoInput/>
+
+        <br>
+        <span
+        (mouseover)="onMouseOver()"
+        (mouseout)="onMouseOut()"
+        [class.highlight]="isMouseOver">
+            Pass Mouse
+        </span>
     </article>
 
 </section>
