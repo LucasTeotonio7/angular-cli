@@ -83,6 +83,10 @@
 <article>
     <h3>Input/Output Properties</h3>
     <app-course [name]="courseName"></app-course>
+
+    <counter [value]="initialValue"
+    (changeValue)="onChangeValue($event)"
+    ></counter>
 </article>
 
 </section>
