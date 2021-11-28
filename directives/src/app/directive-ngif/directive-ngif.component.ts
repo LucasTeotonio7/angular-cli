@@ -10,6 +10,7 @@ export class DirectiveNgifComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("lint-test")
   }
 
 }
