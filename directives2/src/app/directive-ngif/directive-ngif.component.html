@@ -1,1 +1,28 @@
-<p>directive-ngif works!</p>
+<h3>*ngif</h3>
+
+<div *ngIf="courses.length > 0; else emptyCourses">
+    Lista de Cursos
+</div>
+
+<!-- ngIf: recomendado para arvores maiores -->
+<ng-template #emptyCourses>Lista de cursos vazia</ng-template>
+
+<div *ngIf="showCourses">
+    Lista de Cursos
+</div>
+
+<div *ngIf="!showCourses">
+    Lista de cursos vazia
+</div>
+
+<button (click)="onShowCourses()" class="btn btn-primary">Exibir ou Esconder Cursos</button>
+
+<!-- hidden: recomendado para arvores menores -->
+<h5>Hidden como alternativa</h5>
+<div [hidden]="!showCourses">
+    Lista de Cursos
+</div>
+
+<div [hidden]="showCourses">
+    Lista de cursos vazia
+</div>
