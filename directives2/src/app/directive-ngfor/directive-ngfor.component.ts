@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectiveNgforComponent implements OnInit {
 
+  courses:string[] = ["angular", "C++", "Java", "Go"]
+
   constructor() { }
 
   ngOnInit(): void {

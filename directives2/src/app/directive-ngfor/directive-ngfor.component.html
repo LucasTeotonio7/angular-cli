@@ -1,1 +1,7 @@
-<p>directive-ngfor works!</p>
+<h5>directive-ngfor</h5>
+
+<ul>
+    <li *ngFor="let course of courses, let i = index">
+        {{ i + 1 }} - {{ course }}
+    </li>
+</ul>
