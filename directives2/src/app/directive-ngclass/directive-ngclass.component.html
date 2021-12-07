@@ -1,1 +1,23 @@
-<p>directive-ngclass works!</p>
+<!-- property binding -->
+<h1>
+    <h5>property binding</h5>
+    <i class="bi"
+    [class.bi-star] = '!myFavorite'
+    [class.bi-star-fill] = 'myFavorite'
+
+    (click)="onClick()"
+    ></i>
+</h1>
+
+<!-- ng-class -->
+<h1>
+    <h5>ng-class</h5>
+    <i class="bi"
+    [ngClass]="{
+        'bi-star': !myFavorite,
+        'bi-star-fill': myFavorite
+    }"
+
+    (click)="onClick()"
+    ></i>
+</h1>
