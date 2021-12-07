@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DirectiveNgifComponent } from './directive-ngif/directive-ngif.component';
 import { DirectiveNgswitchComponent } from './directive-ngswitch/directive-ngswitch.component';
 import { DirectiveNgforComponent } from './directive-ngfor/directive-ngfor.component';
+import { DirectiveNgclassComponent } from './directive-ngclass/directive-ngclass.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectiveNgifComponent,
     DirectiveNgswitchComponent,
-    DirectiveNgforComponent
+    DirectiveNgforComponent,
+    DirectiveNgclassComponent
   ],
   imports: [
     BrowserModule,
