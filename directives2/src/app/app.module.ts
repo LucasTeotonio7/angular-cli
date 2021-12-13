@@ -10,6 +10,7 @@ import { DirectiveNgclassComponent } from './directive-ngclass/directive-ngclass
 import { DirectiveNgstyleComponent } from './directive-ngstyle/directive-ngstyle.component';
 import { FormsModule } from '@angular/forms';
 import { ElvisOperatorComponent } from './elvis-operator/elvis-operator.component';
+import { ExampleNgContentComponent } from './example-ng-content/example-ng-content.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ElvisOperatorComponent } from './elvis-operator/elvis-operator.componen
     DirectiveNgclassComponent,
     DirectiveNgstyleComponent,
     ElvisOperatorComponent,
+    ExampleNgContentComponent,
   ],
   imports: [
     BrowserModule,
