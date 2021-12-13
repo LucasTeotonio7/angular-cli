@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectiveNgstyleComponent implements OnInit {
 
+  active: boolean = false;
+  fontSize: number = 10;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeActive(){
+    this.active = !this.active;
   }
 
 }

@@ -1,1 +1,26 @@
-<p>directive-ngstyle works!</p>
+<h5>Styles com Property Binding (Style Binding)</h5>
+<button
+    [style.backgroundColor]="active? 'blue':'gray'"
+    [style.color]="active? 'white':'black'"
+    [style.fontWeight]="active? 'bold':'normal'"
+    [style.fontSize]="fontSize + 'px'"
+    (click)="changeActive()"
+>
+Mudar atributo (active)
+</button>
+<br>
+
+<input type="number" [(ngModel)]="fontSize">
+
+<h5>Styles com diretiva NgStyle</h5>
+<button
+    [ngStyle]="{
+        'backgroundColor': (active ? 'blue':'gray'),
+        'color': (active ? 'white':'black'),
+        'fontWeight': (active ? 'bold':'normal'),
+        'fontSize': fontSize + 'px'
+    }"
+    (click)="changeActive()"
+>
+Mudar atributo (active)
+</button>
