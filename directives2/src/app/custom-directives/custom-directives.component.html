@@ -15,3 +15,19 @@
 <p [highlight]="'red'" [defaultColor]="'gray'">
     texto com highlight com cores customizadas
 </p>
+
+<div *ngIf="showCourses">
+    Lista de Cursos
+</div>
+
+<div *myNgElse="showCourses">
+    Lista de cursos vazia
+</div>
+
+<button (click)="onShowCourses()" class="btn btn-primary">Exibir ou Esconder Cursos</button>
+
+<ng-template [myNgElse]="showCourses">
+    <div>
+        Lista de cursos vazia
+    </div>
+</ng-template>
