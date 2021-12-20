@@ -5,7 +5,9 @@ import { CoursesService } from './courses.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
+  //FIXME: using the service only in one component
+  // providers: [CoursesService]
 })
 export class CoursesComponent implements OnInit {
 
