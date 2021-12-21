@@ -1,5 +1,6 @@
 <h3>Lista de cursos</h3>
 
+
 <input type="text" #courseInput>
 <button (click)="onAddCourse(courseInput.value)">Adicionar Curso</button>
 
@@ -8,3 +9,5 @@
         {{ course }}
     </li>
 </ul>
+
+<app-receive-course-created></app-receive-course-created>

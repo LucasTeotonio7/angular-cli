@@ -6,8 +6,6 @@ import { CoursesService } from './courses.service';
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
-  //FIXME: using the service only in one component
-  // providers: [CoursesService]
 })
 export class CoursesComponent implements OnInit {
 
@@ -16,7 +14,10 @@ export class CoursesComponent implements OnInit {
   constructor(private _coursesService: CoursesService) {}
 
   ngOnInit(): void {
-    this.courses = this._coursesService.getCourses()
+    this.courses = this._coursesService.getCourses();
+    CoursesService.createdNewCourse.subscribe(
+      course => this.courses.push(course)
+    );
   }
 
 }
