@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoursesService } from './courses/courses.service';
 import { CreateCourseModule } from './create-course/create-course.module';
 import { CoursesModule } from './courses/courses.module';
+import { LogService } from './shared/log.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { CoursesModule } from './courses/courses.module';
     CreateCourseModule,
     CoursesModule,
   ],
-  // providers: [CoursesService],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
