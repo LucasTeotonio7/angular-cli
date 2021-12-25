@@ -8,3 +8,14 @@
 <p>Link: {{ book.url }}</p>
 
 <p>livro: {{ book | json }}</p>
+
+<input type="text" [(ngModel)]="filter">
+<br>
+<input type="text" #newValue>
+<button (click)="addCourse(newValue.value)">Add Curso</button>
+
+<ul>
+    <li *ngFor="let bk of books | filterArray:filter">
+        {{ bk }}
+    </li>
+</ul>

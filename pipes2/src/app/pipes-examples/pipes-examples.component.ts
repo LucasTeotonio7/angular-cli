@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PipesExamplesComponent implements OnInit {
 
+  filter: string = ''
+
   book: any = {
     title: 'Learning JavaScript Data Structures and Algorithms 2nd ed',
     rating: 4.54321,
@@ -16,9 +18,16 @@ export class PipesExamplesComponent implements OnInit {
     url: 'http://a.co/glqjpRP'
   }
 
+  books: any [] = ['java', 'angular']
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addCourse(value: any){
+    this.books.push(value);
+    console.log(this.books);
   }
 
 }
