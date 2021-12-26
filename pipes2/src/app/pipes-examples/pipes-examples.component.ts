@@ -30,4 +30,17 @@ export class PipesExamplesComponent implements OnInit {
     console.log(this.books);
   }
 
+  getCourses(){
+    if (this.books.length === 0 || this.filter === ''){
+      return this.books;
+    }
+
+    return this.books.filter((v:any)=>{
+      if(v.toLowerCase().indexOf(this.filter.toLowerCase()) >= 0){
+        return true;
+      }
+      return false
+    })
+  }
+
 }
