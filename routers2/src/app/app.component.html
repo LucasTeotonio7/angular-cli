@@ -9,9 +9,14 @@
     <li routerLinkActive="active" routerLink="/courses">
       <a>Courses</a>
     </li>
+    <li routerLinkActive="active" [routerLink]="['courses', idCourse.value]">
+      <a>Courses Id</a>
+    </li>
   </span>
 </mat-toolbar>
 
 <br>
 
+<p>Entre com o id do curso</p>
+<input type="text" #idCourse>
 <router-outlet></router-outlet>

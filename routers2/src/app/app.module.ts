@@ -8,13 +8,15 @@ import { CoursesComponent } from './courses/courses.component';
 import { routing } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
