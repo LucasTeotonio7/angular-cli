@@ -10,8 +10,20 @@
     position: fixed;
 }
 
-.title-group a{
+.title-group li{
+    list-style: none;
     margin-left: 10px;
+    padding: 7%;
+    cursor: pointer;
+}
+
+.title-group li.active{
+    list-style: none;
+    margin-left: 10px;
+    background-color: #017ba3;
+}
+
+.title-group a{
     text-decoration: none;
     color: #fff;
 }
