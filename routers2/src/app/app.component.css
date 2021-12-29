@@ -13,14 +13,11 @@
 .title-group li{
     list-style: none;
     margin-left: 10px;
-    padding: 7%;
     cursor: pointer;
 }
 
-.title-group li.active{
-    list-style: none;
-    margin-left: 10px;
-    background-color: #017ba3;
+.title-group li.active a{
+    color: #ff0;
 }
 
 .title-group a{
