@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
-import { routing } from './app.routing';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CoursesService } from './courses/courses.service';
 import { CourseNotFoundComponent } from './course-not-found/course-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { CourseNotFoundComponent } from './course-not-found/course-not-found.com
   ],
   imports: [
     BrowserModule,
-    routing,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AppRoutingModule,
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
