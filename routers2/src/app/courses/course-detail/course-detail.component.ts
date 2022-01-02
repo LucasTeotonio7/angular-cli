@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
-import { CoursesService } from '../courses/courses.service';
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'app-course-detail',

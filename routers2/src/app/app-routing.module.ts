@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { CourseDetailComponent } from "./course-detail/course-detail.component";
+import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 
 import { CoursesComponent } from "./courses/courses.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
-import { CourseNotFoundComponent } from "./course-not-found/course-not-found.component";
+import { CourseNotFoundComponent } from "./courses/course-not-found/course-not-found.component";
 
 const routes: Routes = [
     {
