@@ -8,13 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoursesModule } from './courses/courses.module';
+import { StudentModule } from './student/student.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -22,6 +22,7 @@ import { CoursesModule } from './courses/courses.module';
     MatToolbarModule,
     CoursesModule,
     AppRoutingModule,
+    StudentModule,
   ],
   bootstrap: [AppComponent]
 })
