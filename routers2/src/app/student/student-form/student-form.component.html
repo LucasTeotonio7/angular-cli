@@ -1,1 +1,19 @@
-<p>student-form works!</p>
+<h3>Criar / Editar</h3>
+
+<form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Id</label>
+      <input [(ngModel)]="student.id" type="number" class="form-control" name="id" placeholder="Informe id">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome</label>
+      <input [(ngModel)]="student.name" type="text" class="form-control" name="name" placeholder="Informe nome">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input [(ngModel)]="student.email" type="email" class="form-control" name="email" placeholder="Informe email">
+    </div>
+
+    <button type="button" class="btn btn-primary">Salvar</button>
+    <button type="button" (click)="cancel()" class="btn btn-secondary ml-2">Cancelar</button>
+</form>

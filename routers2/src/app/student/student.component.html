@@ -1,3 +1,27 @@
-<p>student works!</p>
+<h1 class="display-4">Lista de Alunos</h1>
 
-<router-outlet></router-outlet>
+<div class="row">
+    <div class="col-md-6">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students" [routerLink]="[student.id]">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

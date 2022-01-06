@@ -1,17 +1,17 @@
 <mat-toolbar class="mat-elevation-z3 header">
   <span class="title-group">
     <li routerLink="/">
-      <a>Home</a>
+      <a>Início</a>
     </li>
     <li routerLinkActive="active" routerLink="/login">
       <a>Login</a>
     </li>
     <li routerLinkActive="active" routerLink="/courses" [queryParams]="{page:1}">
-      <a>Courses</a>
+      <a>Cursos</a>
     </li>
-    <li [routerLink]="['courses', idCourse.value]">
+    <!-- <li [routerLink]="['courses', idCourse.value]">
       <a>Courses Id</a>
-    </li>
+    </li> -->
     <li routerLinkActive="active" routerLink="/student">
       <a>Alunos</a>
     </li>
@@ -20,6 +20,6 @@
 
 <br>
 
-<p>Entre com o id do curso</p>
-<input type="text" #idCourse>
+<!-- <p>Entre com o id do curso</p>
+<input type="text" #idCourse> -->
 <router-outlet></router-outlet>

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { StudentComponent } from './student.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentRoutingModule } from './student.routing.module';
+import { StudentService } from './student.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { StudentRoutingModule } from './student.routing.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     StudentRoutingModule
-  ]
+  ],
+  providers:[StudentService]
 })
 export class StudentModule { }

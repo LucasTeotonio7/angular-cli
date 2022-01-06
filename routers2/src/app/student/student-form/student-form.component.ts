@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-student-form',
@@ -7,9 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  constructor() { }
+  student: any;
+  subscription!: Subscription;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private studentService: StudentService
+  ) { }
 
   ngOnInit(): void {
+    this.subscription = this.route.params.subscribe(
+      (params: any) => {
+        let id = params['id'];
+
+        this.student = this.studentService.getStudent(id);
+
+        if (this.student === null){
+          this.student = {}
+        }
+
+      }
+    );
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
+  cancel(){
+    this.router.navigate(['/student']);
   }
 
 }
