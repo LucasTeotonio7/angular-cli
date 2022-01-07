@@ -7,7 +7,7 @@ import { StudentComponent } from "./student.component";
 
 const studentRoutes = [
     {
-        path: 'student',
+        path: '',
         component: StudentComponent,
         children: [
             {path: 'create', component: StudentFormComponent},

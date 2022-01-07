@@ -10,16 +10,16 @@ import { CoursesComponent } from './courses.component';
 
 const coursesRoutes: Routes = [
     {
-        path: 'courses',
+        path: '',
         component: CoursesComponent
-    },
-    {
-        path: 'courses/:id',
-        component: CourseDetailComponent
     },
     {
         path: 'not-found',
         component: CourseNotFoundComponent
+    },
+    {
+        path: ':id',
+        component: CourseDetailComponent
     },
 ];
 

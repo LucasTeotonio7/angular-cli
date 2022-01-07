@@ -33,7 +33,7 @@ export class CourseDetailComponent implements OnInit {
     this.course = this.coursesService.getCourse(this.id)
 
     if(this.course == null){
-      this.router.navigate(['/not-found'])
+      this.router.navigate(['courses/not-found'])
     }
   }
 
