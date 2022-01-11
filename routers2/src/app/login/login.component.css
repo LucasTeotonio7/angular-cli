@@ -1,0 +1,29 @@
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content form{
+    width: 400px;
+    height: 350px;
+    box-shadow: 0 0 10px #c5c5c5;
+    margin-top: 20px;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.content form h3{
+    /* width: 100%;
+    background-color: tomato; */
+    text-align: center;
+    font-size: 20px;
+}
+
+.content .form-group{
+    margin-top: 20px;
+}
+
+.content form button{
+    float: right;
+}

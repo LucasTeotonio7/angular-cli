@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { CoursesModule } from './courses/courses.module';
-// import { StudentModule } from './student/student.module';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -20,10 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    // CoursesModule,
     AppRoutingModule,
-    // StudentModule,
+    FormsModule,
   ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
