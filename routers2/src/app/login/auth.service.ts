@@ -29,4 +29,8 @@ export class AuthService {
 
   }
 
+  isAuthenticated(){
+    return this.userAuth;
+  }
+
 }
