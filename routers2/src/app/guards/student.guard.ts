@@ -14,7 +14,7 @@ export class StudentGuard implements CanActivateChild {
     console.log(childRoute)
 
     if(state.url.includes('edit')){
-      return false;
+      // return false;
     }
 
     return true;

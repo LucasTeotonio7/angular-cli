@@ -7,6 +7,7 @@ import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentRoutingModule } from './student.routing.module';
 import { StudentService } from './student.service';
+import { StudentDeactivateGuard } from '../guards/student-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { StudentService } from './student.service';
     FormsModule,
     StudentRoutingModule
   ],
-  providers:[StudentService]
+  providers:[
+    StudentService,
+    StudentDeactivateGuard
+  ]
 })
 export class StudentModule { }

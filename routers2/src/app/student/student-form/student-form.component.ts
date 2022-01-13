@@ -12,6 +12,7 @@ export class StudentFormComponent implements OnInit {
 
   student: any;
   subscription!: Subscription;
+  private changedForm:boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,18 @@ export class StudentFormComponent implements OnInit {
 
   cancel(){
     this.router.navigate(['/student']);
+  }
+
+  canChangeRoute(){
+    if(this.changedForm){
+      return confirm("Tem certeza que deseja sair?")
+    } else{
+      return true;
+    }
+  }
+
+  onInput(){
+    this.changedForm = true;
   }
 
 }
