@@ -14,7 +14,8 @@ const routes: Routes = [
             m => m.CoursesModule
         ),
         canActivate: [AuthGuard],
-        canActivateChild: [CoursesGuard]
+        canActivateChild: [CoursesGuard],
+        canLoad: [AuthGuard]
     },
     {
         path: 'student',
@@ -23,6 +24,7 @@ const routes: Routes = [
         ),
         canActivate: [AuthGuard],
         // canActivateChild: [StudentGuard]
+        canLoad: [AuthGuard]
     },
     {
         path: '',
