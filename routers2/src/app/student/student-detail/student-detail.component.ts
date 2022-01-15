@@ -20,12 +20,19 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe(
-      (params: any) => {
-        let id = params['id'];
+    // this.subscription = this.route.params.subscribe(
+    //   (params: any) => {
+    //     let id = params['id'];
 
-        this.student = this.studentService.getStudent(id);
+    //     this.student = this.studentService.getStudent(id);
 
+    //   }
+    // );
+
+    this.subscription = this.route.data.subscribe(
+      (info) => {
+        console.log(info);
+        this.student = info.student;
       }
     );
   }

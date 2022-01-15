@@ -8,6 +8,7 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
 import { StudentRoutingModule } from './student.routing.module';
 import { StudentService } from './student.service';
 import { StudentDeactivateGuard } from '../guards/student-deactivate.guard';
+import { StudentDetailResolver } from './guards/student-detail.resolver';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StudentDeactivateGuard } from '../guards/student-deactivate.guard';
   ],
   providers:[
     StudentService,
-    StudentDeactivateGuard
+    StudentDeactivateGuard,
+    StudentDetailResolver
   ]
 })
 export class StudentModule { }
