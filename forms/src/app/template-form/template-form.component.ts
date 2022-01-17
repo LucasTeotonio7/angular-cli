@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateFormComponent implements OnInit {
 
+
+  user: any = {
+    name: 'lucas',
+    email: 'lucas@email.com'
+  }
+
   onSubmit(form: any){
     console.log(form)
+    console.log(this.user)
   }
 
   constructor() { }
