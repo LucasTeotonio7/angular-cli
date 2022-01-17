@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
