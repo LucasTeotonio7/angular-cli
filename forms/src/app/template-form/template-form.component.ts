@@ -9,7 +9,7 @@ export class TemplateFormComponent implements OnInit {
 
 
   user: any = {
-    name: 'lucas',
+    name: null,
     email: 'lucas@email.com'
   }
 
