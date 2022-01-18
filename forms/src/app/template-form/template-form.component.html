@@ -2,12 +2,15 @@
     <div class="form-group p-1">
       <label for="exampleInputEmail1">Nome</label>
       <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name"
-      required #name>
+      required #name="ngModel">
     </div>
+    <p class="msg-invalid" *ngIf="!name.valid && name.touched">Campo Obrigatório</p>
+
     <div class="form-group p-1">
       <label for="exampleInputPassword1">Email</label>
       <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
-      required email>
+      required email #email=ngModel>
+      <p class="msg-invalid" *ngIf="!email.valid && email.touched">Email inválido!</p>
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

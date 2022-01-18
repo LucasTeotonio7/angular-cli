@@ -11,3 +11,10 @@ form button{
 .ng-invalid.ng-touched:not(form){
     border: 1px solid red;
 }
+
+
+.msg-invalid{
+    font-size: 10px;
+    color: #ff6347;
+    margin-left: 10px;
+}
