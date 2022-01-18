@@ -12,5 +12,5 @@
       required email #email=ngModel>
       <p class="msg-invalid" *ngIf="!email.valid && email.touched">Email inválido!</p>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Salvar</button>
 </form>
