@@ -13,4 +13,7 @@
       <p class="msg-invalid" *ngIf="!email.valid && email.touched">Email inválido!</p>
     </div>
     <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Salvar</button>
+
+    <app-form-debug [form]="f"></app-form-debug>
+
 </form>
