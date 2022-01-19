@@ -1,34 +1,33 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
 
-
     <div class="col-md-12 mt-2">
       <label for="name" class="control-label">Nome</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name"
+      <input type="text" class="form-control" [ngClass]="ApplyErrorClass(name)" id="name" name="name" [(ngModel)]="user.name"
       required #name="ngModel">
-      <p class="msg-invalid" *ngIf="!name.valid && name.touched">Campo Obrigatório</p>
+      <div class="invalid-feedback" *ngIf="checkTouched(name)">Nome Obrigatório!</div>
     </div>
 
     <div class="col-md-12 mt-2">
       <label for="email" class="control-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
+      <input type="email" class="form-control" [ngClass]="ApplyErrorClass(email)" id="email" name="email" [(ngModel)]="user.email"
       required email #email=ngModel>
-      <p class="msg-invalid" *ngIf="!email.valid && email.touched">Email inválido!</p>
+      <div class="invalid-feedback" *ngIf="checkTouched(email)">Email inválido!</div>
     </div>
 
     <div class="row">
 
       <div class="col-md-3 mt-2">
         <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" id="cep" name="cep"
+        <input type="text" class="form-control" [ngClass]="ApplyErrorClass(cep)" id="cep" name="cep"
         ngModel required #cep=ngModel>
-        <p class="msg-invalid" *ngIf="!cep.valid && cep.touched">CEP é obrigatório!</p>
+        <div class="invalid-feedback" *ngIf="checkTouched(cep)">CEP Obrigatório!</div>
       </div>
 
       <div class="col-md-3 mt-2">
         <label for="number" class="control-label">Número</label>
-        <input type="text" class="form-control" id="number" name="number"
+        <input type="text" class="form-control" [ngClass]="ApplyErrorClass(number)" id="number" name="number"
         ngModel required #number=ngModel>
-        <p class="msg-invalid" *ngIf="!number.valid && number.touched">Número é obrigatório!</p>
+        <div class="invalid-feedback" *ngIf="checkTouched(number)">Número Obrigatório!</div>
       </div>
 
       <div class="col-md-6 mt-2">
@@ -43,7 +42,6 @@
       <label for="street" class="control-label">Rua</label>
       <input type="text" class="form-control" id="street" name="street"
       ngModel readonly #street=ngModel>
-      <!-- <p class="msg-invalid" *ngIf="!street.valid && street.touched">Rua é Obrigatório</p> -->
     </div>
 
     <div class="row">

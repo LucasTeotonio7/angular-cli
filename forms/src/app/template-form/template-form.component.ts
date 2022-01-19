@@ -23,4 +23,12 @@ export class TemplateFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkTouched(field: any): boolean{
+    return !field.valid && field.touched;
+  }
+
+  ApplyErrorClass(field: any){
+    return { 'is-invalid': this.checkTouched(field) };
+  }
+
 }

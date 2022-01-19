@@ -1,22 +1,5 @@
-/* form{
-    width: 500px;
-    margin-top: 20px;
-    padding: 10px;
-} */
-
 form button{
     margin-top: 10px;
-}
-
-.ng-invalid.ng-touched:not(form){
-    border: 1px solid red;
-}
-
-
-.msg-invalid{
-    font-size: 10px;
-    color: #ff6347;
-    margin-left: 10px;
 }
 
 .control-label{
