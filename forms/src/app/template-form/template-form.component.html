@@ -14,60 +14,64 @@
       <div class="invalid-feedback" *ngIf="checkTouched(email)">Email inválido!</div>
     </div>
 
-    <div class="row">
+    <div ngModelGroup="address">
 
-      <div class="col-md-3 mt-2">
-        <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" [ngClass]="ApplyErrorClass(cep)" id="cep" name="cep"
-        ngModel required #cep=ngModel>
-        <div class="invalid-feedback" *ngIf="checkTouched(cep)">CEP Obrigatório!</div>
+      <div class="row">
+
+        <div class="col-md-3 mt-2">
+          <label for="cep" class="control-label">CEP</label>
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass(cep)" id="cep" name="cep"
+          ngModel required #cep=ngModel>
+          <div class="invalid-feedback" *ngIf="checkTouched(cep)">CEP Obrigatório!</div>
+        </div>
+
+        <div class="col-md-3 mt-2">
+          <label for="number" class="control-label">Número</label>
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass(number)" id="number" name="number"
+          ngModel required #number=ngModel>
+          <div class="invalid-feedback" *ngIf="checkTouched(number)">Número Obrigatório!</div>
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <label for="complement" class="control-label">Complemento</label>
+          <input type="text" class="form-control" id="complement" name="complement"
+          ngModel #complement=ngModel>
+        </div>
+
       </div>
 
-      <div class="col-md-3 mt-2">
-        <label for="number" class="control-label">Número</label>
-        <input type="text" class="form-control" [ngClass]="ApplyErrorClass(number)" id="number" name="number"
-        ngModel required #number=ngModel>
-        <div class="invalid-feedback" *ngIf="checkTouched(number)">Número Obrigatório!</div>
+      <div class="col-md-12 mt-2">
+        <label for="street" class="control-label">Rua</label>
+        <input type="text" class="form-control" id="street" name="street"
+        ngModel readonly #street=ngModel>
       </div>
 
-      <div class="col-md-6 mt-2">
-        <label for="complement" class="control-label">Complemento</label>
-        <input type="text" class="form-control" id="complement" name="complement"
-        ngModel #complement=ngModel>
-      </div>
+      <div class="row">
 
-    </div>
+        <div class="col-md-6 mt-2">
+          <label for="district" class="control-label">Bairro</label>
+          <input type="text" class="form-control" id="district" name="district"
+          ngModel readonly #district=ngModel>
+        </div>
 
-    <div class="col-md-12 mt-2">
-      <label for="street" class="control-label">Rua</label>
-      <input type="text" class="form-control" id="street" name="street"
-      ngModel readonly #street=ngModel>
-    </div>
+        <div class="col-md-4 mt-2">
+          <label for="city" class="control-label">Cidade</label>
+          <input type="text" class="form-control" id="city" name="city"
+          ngModel readonly #city=ngModel>
+        </div>
 
-    <div class="row">
+        <div class="col-md-2 mt-2">
+          <label for="state" class="control-label">Estado</label>
+          <input type="text" class="form-control" id="state" name="state"
+          ngModel readonly #state=ngModel>
+        </div>
 
-      <div class="col-md-6 mt-2">
-        <label for="district" class="control-label">Bairro</label>
-        <input type="text" class="form-control" id="district" name="district"
-        ngModel readonly #district=ngModel>
-      </div>
-
-      <div class="col-md-4 mt-2">
-        <label for="city" class="control-label">Cidade</label>
-        <input type="text" class="form-control" id="city" name="city"
-        ngModel readonly #city=ngModel>
-      </div>
-
-      <div class="col-md-2 mt-2">
-        <label for="state" class="control-label">Estado</label>
-        <input type="text" class="form-control" id="state" name="state"
-        ngModel readonly #state=ngModel>
       </div>
 
     </div>
 
     <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Salvar</button>
 
-    <!-- <app-form-debug [form]="f"></app-form-debug> -->
+    <app-form-debug [form]="f"></app-form-debug>
 
 </form>
