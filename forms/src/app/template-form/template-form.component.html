@@ -21,7 +21,7 @@
         <div class="col-md-3 mt-2">
           <label for="cep" class="control-label">CEP</label>
           <input type="text" class="form-control" [ngClass]="ApplyErrorClass(cep)" id="cep" name="cep"
-          ngModel required #cep=ngModel>
+          ngModel required #cep=ngModel (blur)="searchCep(cep.value)">
           <div class="invalid-feedback" *ngIf="checkTouched(cep)">CEP Obrigatório!</div>
         </div>
 
