@@ -33,7 +33,7 @@ export class TemplateFormComponent implements OnInit {
     return { 'is-invalid': this.checkTouched(field) };
   }
 
-  searchCep(cep: any){
+  searchCep(cep: any, form: any){
     //Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
 
@@ -45,14 +45,56 @@ export class TemplateFormComponent implements OnInit {
 
       if(validacep.test(cep)) {
 
+        this.resetFormData(form);
+
         this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe(
-          data => console.log(data)
+          data => this.fillFields(data, form)
         );
 
       }
 
     }
 
+  }
+
+  fillFields(dados: any, ngForm: any){
+    // ngForm.setValue({
+    //   name: ngForm.value.name,
+    //   email: ngForm.value.email,
+    //   address: {
+    //     cep: dados.cep,
+    //     number: '',
+    //     complement: dados.complemento,
+    //     street: dados.logradouro,
+    //     district: dados.bairro,
+    //     city: dados.localidade,
+    //     state: dados.uf
+    //   }
+
+    // })
+
+    ngForm.form.patchValue({
+      address: {
+        complement: dados.complemento,
+        street: dados.logradouro,
+        district: dados.bairro,
+        city: dados.localidade,
+        state: dados.uf
+      }
+    });
+
+  }
+
+  resetFormData(ngForm: any){
+    ngForm.form.patchValue({
+      address: {
+        complement: null,
+        street: null,
+        district: null,
+        city: null,
+        state: null
+      }
+    });
   }
 
 }

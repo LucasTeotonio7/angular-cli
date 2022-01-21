@@ -21,7 +21,7 @@
         <div class="col-md-3 mt-2">
           <label for="cep" class="control-label">CEP</label>
           <input type="text" class="form-control" [ngClass]="ApplyErrorClass(cep)" id="cep" name="cep"
-          ngModel required #cep=ngModel (blur)="searchCep(cep.value)">
+          ngModel required #cep=ngModel (blur)="searchCep(cep.value, f)">
           <div class="invalid-feedback" *ngIf="checkTouched(cep)">CEP Obrigatório!</div>
         </div>
 
@@ -42,16 +42,18 @@
 
       <div class="col-md-12 mt-2">
         <label for="street" class="control-label">Rua</label>
-        <input type="text" class="form-control" id="street" name="street"
-        ngModel readonly #street=ngModel>
+        <input type="text" class="form-control" [ngClass]="ApplyErrorClass(street)"
+        id="street" name="street" ngModel required #street=ngModel>
+        <div class="invalid-feedback" *ngIf="checkTouched(street)">Rua Obrigatório!</div>
       </div>
 
       <div class="row">
 
         <div class="col-md-6 mt-2">
           <label for="district" class="control-label">Bairro</label>
-          <input type="text" class="form-control" id="district" name="district"
-          ngModel readonly #district=ngModel>
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass(district)"
+          id="district" name="district" ngModel required #district=ngModel>
+          <div class="invalid-feedback" *ngIf="checkTouched(district)">Bairro Obrigatório!</div>
         </div>
 
         <div class="col-md-4 mt-2">
