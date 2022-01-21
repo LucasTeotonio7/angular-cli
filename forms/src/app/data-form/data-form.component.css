@@ -1,0 +1,8 @@
+form button{
+    margin-top: 10px;
+}
+
+.control-label{
+    font-size: 0.9rem;
+    font-weight: bold;
+}
