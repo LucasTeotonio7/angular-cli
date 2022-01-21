@@ -15,12 +15,14 @@ export class TemplateFormComponent implements OnInit {
     email: 'lucas@email.com'
   }
 
-  onSubmit(form: any){
-    console.log(form)
-    console.log(this.user)
-  }
-
   constructor(private http: HttpClient) { }
+
+  onSubmit(form: any){
+    // console.log(form)
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value)).subscribe(
+      data => console.log(data)
+    );
+  }
 
   ngOnInit(): void {
   }
