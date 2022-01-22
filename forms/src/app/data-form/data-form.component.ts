@@ -31,8 +31,18 @@ export class DataFormComponent implements OnInit {
   }
   onSubmit(){
     this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
-      data => console.log(data)
-    );
+      data => {
+        console.log(data);
+        // reset form
+        this.reset();
+      },
+      (error: any) =>{
+        alert('erro');
+      });
+  }
+
+  reset(){
+    this.form.reset();
   }
 
 }
