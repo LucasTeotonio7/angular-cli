@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -23,8 +23,11 @@ export class DataFormComponent implements OnInit {
     // });
 
     this.form = this.FormBuilder.group({
-      name: [null],
-      email: [null]
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]]
+
+      // [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+
     })
 
 
