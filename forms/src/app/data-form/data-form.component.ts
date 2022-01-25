@@ -25,14 +25,16 @@ export class DataFormComponent implements OnInit {
     this.form = this.FormBuilder.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      cep: [null, Validators.required],
-      number: [null, Validators.required],
-      complement: [null],
-      street: [null, Validators.required],
-      district: [null, Validators.required],
-      city: [null],
-      state: [null]
 
+      address: this.FormBuilder.group({
+        cep: [null, Validators.required],
+        number: [null, Validators.required],
+        complement: [null],
+        street: [null, Validators.required],
+        district: [null, Validators.required],
+        city: [null],
+        state: [null]
+      })
       // [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
 
     })

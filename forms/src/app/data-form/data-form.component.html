@@ -14,20 +14,20 @@
       <div class="invalid-feedback">{{ checkInvalidEmail() }}</div>
     </div>
 
-    <div>
+    <div formGroupName="address">
 
       <div class="row">
 
         <div class="col-md-3 mt-2">
           <label for="cep" class="control-label">CEP</label>
-          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('cep')" id="cep"
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.cep')" id="cep"
           formControlName="cep">
           <div class="invalid-feedback">CEP Obrigatório!</div>
         </div>
 
         <div class="col-md-3 mt-2">
           <label for="number" class="control-label">Número</label>
-          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('number')" id="number"
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.number')" id="number"
           formControlName="number">
           <div class="invalid-feedback">Número Obrigatório!</div>
         </div>
@@ -42,7 +42,7 @@
 
       <div class="col-md-12 mt-2">
         <label for="street" class="control-label">Rua</label>
-        <input type="text" class="form-control" [ngClass]="ApplyErrorClass('street')"
+        <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.street')"
         id="street" formControlName="street">
         <div class="invalid-feedback">Rua Obrigatório!</div>
       </div>
@@ -51,7 +51,7 @@
 
         <div class="col-md-6 mt-2">
           <label for="district" class="control-label">Bairro</label>
-          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('district')"
+          <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.district')"
           id="district" formControlName="district">
           <div class="invalid-feedback">Bairro Obrigatório!</div>
         </div>
