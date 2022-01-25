@@ -48,4 +48,28 @@ export class DataFormComponent implements OnInit {
     this.form.reset();
   }
 
+  checkTouched(field: any){
+    return !this.form.get(field)?.valid && this.form.get(field)?.touched;
+  }
+
+  checkInvalidEmail(){
+
+    let FieldEmail = this.form.get('email');
+
+    if(FieldEmail?.errors){
+      if (FieldEmail.errors['required'] && FieldEmail.touched){
+        return 'Email Obrigatório!'
+      }
+      if (FieldEmail.errors['email'] && FieldEmail.touched){
+        return 'Email Inválido!'
+      }
+    }
+
+    return '';
+  }
+
+  ApplyErrorClass(field: any){
+    return { 'is-invalid': this.checkTouched(field) };
+  }
+
 }

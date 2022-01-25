@@ -2,14 +2,16 @@
 
     <div class="col-md-12 mt-2">
       <label for="name" class="control-label">Nome</label>
-      <input type="text" class="form-control" id="name" formControlName="name">
+      <input type="text" class="form-control" id="name"
+      formControlName="name" [ngClass]="ApplyErrorClass('name')">
       <div class="invalid-feedback">Nome Obrigatório!</div>
     </div>
 
     <div class="col-md-12 mt-2">
       <label for="email" class="control-label">Email</label>
-      <input type="email" class="form-control" id="email" formControlName="email">
-      <div class="invalid-feedback">Email inválido!</div>
+      <input type="email" class="form-control" id="email"
+      formControlName="email" [ngClass]="ApplyErrorClass('email')">
+      <div class="invalid-feedback">{{ checkInvalidEmail() }}</div>
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
