@@ -62,29 +62,29 @@ export class TemplateFormComponent implements OnInit {
 
   }
 
-  fillFields(dados: any, ngForm: any){
+  fillFields(data: any, ngForm: any){
     // ngForm.setValue({
     //   name: ngForm.value.name,
     //   email: ngForm.value.email,
     //   address: {
-    //     cep: dados.cep,
+    //     cep: data.cep,
     //     number: '',
-    //     complement: dados.complemento,
-    //     street: dados.logradouro,
-    //     district: dados.bairro,
-    //     city: dados.localidade,
-    //     state: dados.uf
+    //     complement: data.complemento,
+    //     street: data.logradouro,
+    //     district: data.bairro,
+    //     city: data.localidade,
+    //     state: data.uf
     //   }
 
     // })
 
     ngForm.form.patchValue({
       address: {
-        complement: dados.complemento,
-        street: dados.logradouro,
-        district: dados.bairro,
-        city: dados.localidade,
-        state: dados.uf
+        complement: data.complemento,
+        street: data.logradouro,
+        district: data.bairro,
+        city: data.localidade,
+        state: data.uf
       }
     });
 

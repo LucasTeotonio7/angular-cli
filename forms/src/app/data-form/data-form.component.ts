@@ -81,4 +81,75 @@ export class DataFormComponent implements OnInit {
     return { 'is-invalid': this.checkTouched(field) };
   }
 
+  searchCep(){
+    console.log('data')
+    let cep = this.form.get('address.cep')?.value
+
+    //Nova variável "cep" somente com dígitos.
+    cep = cep.replace(/\D/g, '');
+
+    //Verifica se campo cep possui valor informado.
+    if (cep != "") {
+
+      //Expressão regular para validar o CEP.
+      var validacep = /^[0-9]{8}$/;
+
+      if(validacep.test(cep)) {
+
+        this.resetFormData();
+
+        this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe(
+          data => {this.fillFields(data)
+          console.log(data)
+          });
+
+      }
+
+    }
+
+  }
+
+  fillFields(data: any){
+    // ngForm.setValue({
+    //   name: ngForm.value.name,
+    //   email: ngForm.value.email,
+    //   address: {
+    //     cep: data.cep,
+    //     number: '',
+    //     complement: data.complemento,
+    //     street: data.logradouro,
+    //     district: data.bairro,
+    //     city: data.localidade,
+    //     state: data.uf
+    //   }
+
+    // })
+
+    this.form.patchValue({
+      address: {
+        complement: data.complemento,
+        street: data.logradouro,
+        district: data.bairro,
+        city: data.localidade,
+        state: data.uf
+      }
+    });
+
+    // this.form.get('name')?.setValue('Raul');
+
+  }
+
+  resetFormData(){
+
+    this.form.patchValue({
+      address: {
+        complement: null,
+        street: null,
+        district: null,
+        city: null,
+        state: null
+      }
+    });
+  }
+
 }
