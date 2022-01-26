@@ -42,7 +42,8 @@ export class DataFormComponent implements OnInit {
 
   }
   onSubmit(){
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
+    if (this.form.valid){
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
       data => {
         console.log(data);
         // reset form
@@ -51,14 +52,31 @@ export class DataFormComponent implements OnInit {
       (error: any) =>{
         alert('erro');
       });
+    } else{
+      this.checkFormValid(this.form)
+    }
   }
+
+  checkFormValid(formGroup: FormGroup){
+    Object.keys(formGroup.controls).forEach(field => {
+      console.log(field)
+      const control = formGroup.get(field)
+      control?.markAsTouched();
+
+      if(control instanceof FormGroup){
+        this.checkFormValid(control)
+      }
+
+    });
+  }
+
 
   reset(){
     this.form.reset();
   }
 
   checkTouched(field: string){
-    return !this.form.get(field)?.valid && this.form.get(field)?.touched;
+    return !this.form.get(field)?.valid && (this.form.get(field)?.touched || this.form.get(field)?.dirty);
   }
 
   checkInvalidEmail(){
