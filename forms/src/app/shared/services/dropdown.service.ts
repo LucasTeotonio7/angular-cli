@@ -13,4 +13,12 @@ export class DropdownService {
     return this.http.get<StatesBr[]>('assets/data/statesbr.json');
   }
 
+  getLevels(){
+    return [
+      {name: 'dev', level: 'junior', desc: 'Dev Jr'},
+      {name: 'dev', level: 'full', desc: 'Dev Full'},
+      {name: 'dev', level: 'senior', desc: 'Dev Senior'}
+    ]
+  }
+
 }

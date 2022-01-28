@@ -16,6 +16,7 @@ export class DataFormComponent implements OnInit {
   form!: FormGroup;
   // states!: StatesBr [];
   states!: Observable <StatesBr[]>;
+  levels!: any[];
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class DataFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.states = this.DropdownService.getStatesBr();
+    this.levels = this.DropdownService.getLevels();
 
     // this.form = new ForGroup({
     //   name: new FormControl(null),
@@ -50,9 +52,11 @@ export class DataFormComponent implements OnInit {
         street: [null, Validators.required],
         district: [null, Validators.required],
         city: [null],
-        state: [null]
-      })
+        state: [null],
+      }),
       // [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+
+      level: [null]
 
     })
 
@@ -171,6 +175,15 @@ export class DataFormComponent implements OnInit {
         state: null
       }
     });
+  }
+
+  setLevel(){
+    const level = {name: 'dev', level: 'full', desc: 'Dev Full'};
+    this.form.get('level')?.setValue(level)
+  }
+
+  compareLevel(obj1: any, obj2: any) {
+    return obj1 && obj2 ? (obj1.id === obj2.id && obj1.level === obj2.level) : obj1 === obj2;
   }
 
 }
