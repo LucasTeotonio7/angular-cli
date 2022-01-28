@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
 import { SearchCepService } from '../shared/services/search-cep.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -13,7 +14,8 @@ import { SearchCepService } from '../shared/services/search-cep.service';
 export class DataFormComponent implements OnInit {
 
   form!: FormGroup;
-  states!: StatesBr [];
+  // states!: StatesBr [];
+  states!: Observable <StatesBr[]>;
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -23,16 +25,18 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.states = this.DropdownService.getStatesBr();
+
     // this.form = new ForGroup({
     //   name: new FormControl(null),
     //   email: new FormControl(null)
     // });
 
 
-    this.DropdownService.getStatesBr().subscribe(data =>{
-      this.states = data;
-      console.log(data)
-    })
+    // this.DropdownService.getStatesBr().subscribe(data =>{
+    //   this.states = data;
+    //   console.log(data)
+    // })
 
 
     this.form = this.FormBuilder.group({

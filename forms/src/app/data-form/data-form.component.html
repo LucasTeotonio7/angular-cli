@@ -58,12 +58,14 @@
 
         <div class="col-md-4 mt-2">
           <label for="city" class="control-label">Cidade</label>
-          <input type="text" class="form-control" id="city" formControlName="city" readonly>
+          <input type="text" class="form-control" id="city" formControlName="city">
         </div>
 
         <div class="col-md-2 mt-2">
           <label for="state" class="control-label">Estado</label>
-          <input type="text" class="form-control" id="state" formControlName="state" readonly>
+          <select class="form-control" id="state" formControlName="state">
+            <option *ngFor="let state of states | async" [value]="state.sigla">{{ state.nome }}</option>
+          </select>
         </div>
 
       </div>
