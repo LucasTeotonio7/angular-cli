@@ -17,6 +17,7 @@ export class DataFormComponent implements OnInit {
   // states!: StatesBr [];
   states!: Observable <StatesBr[]>;
   levels!: any[];
+  languages!: any[];
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -28,6 +29,7 @@ export class DataFormComponent implements OnInit {
 
     this.states = this.DropdownService.getStatesBr();
     this.levels = this.DropdownService.getLevels();
+    this.languages = this.DropdownService.getLanguages();
 
     // this.form = new ForGroup({
     //   name: new FormControl(null),
@@ -56,7 +58,8 @@ export class DataFormComponent implements OnInit {
       }),
       // [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
 
-      level: [null]
+      level: [null],
+      language: [null]
 
     })
 
@@ -180,6 +183,10 @@ export class DataFormComponent implements OnInit {
   setLevel(){
     const level = {name: 'dev', level: 'full', desc: 'Dev Full'};
     this.form.get('level')?.setValue(level)
+  }
+
+  setLanguages(){
+    this.form.get('language')?.setValue(['java', 'python'])
   }
 
   compareLevel(obj1: any, obj2: any) {

@@ -21,4 +21,13 @@ export class DropdownService {
     ]
   }
 
+  getLanguages(){
+    return [
+      {name: 'java', desc: 'java'},
+      {name: 'php', desc: 'php', },
+      {name: 'python', desc: 'python'},
+      {name: 'ruby', desc: 'ruby'}
+    ]
+  }
+
 }

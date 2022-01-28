@@ -73,17 +73,25 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12 mt-2">
+      <div class="col-md-6 mt-2">
         <label for="level" class="control-label">Level</label>
         <select class="form-control" id="level" formControlName="level" [compareWith]="compareLevel">
           <option *ngFor="let level of levels" [ngValue]="level">{{ level.desc }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <label for="language" class="control-label">languages</label>
+        <select multiple class="form-control" id="language" formControlName="language">
+          <option *ngFor="let language of languages" [ngValue]="language.name">{{ language.desc }}</option>
         </select>
       </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
     <button type="submit" (click)="reset()" class="btn btn-secondary">Cancelar</button>
-    <button type="submit" (click)="setLevel()" class="btn btn-secondary">Level</button>
+    <button type="submit" (click)="setLevel()" class="btn btn-info">Level</button>
+    <button type="submit" (click)="setLanguages()" class="btn btn-info">languages</button>
 
     <app-form-debug [form]="form"></app-form-debug>
 
