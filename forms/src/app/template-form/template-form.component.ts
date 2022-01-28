@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SearchCepService } from '../shared/services/search-cep.service';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class TemplateFormComponent implements OnInit {
     email: 'lucas@email.com'
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private SearchCep: SearchCepService) { }
 
   onSubmit(form: any){
     // console.log(form)
@@ -38,27 +41,18 @@ export class TemplateFormComponent implements OnInit {
     return { 'is-invalid': this.checkTouched(field) };
   }
 
-  searchCep(cep: any, form: any){
+  searchCep(cep: string, form: any){
     //Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
 
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      if(validacep.test(cep)) {
-
-        this.resetFormData(form);
-
-        this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe(
-          data => this.fillFields(data, form)
-        );
-
-      }
-
+    if (cep != null && cep !== ''){
+      this.SearchCep.ConsultCEP(cep).subscribe(
+        data => {this.fillFields(data, form)
+        console.log(data)
+        });
     }
+
+
 
   }
 

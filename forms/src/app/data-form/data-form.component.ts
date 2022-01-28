@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
+import { SearchCepService } from '../shared/services/search-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -17,7 +18,8 @@ export class DataFormComponent implements OnInit {
   constructor(
     private FormBuilder: FormBuilder,
     private http: HttpClient,
-    private DropdownService: DropdownService) { }
+    private DropdownService: DropdownService,
+    private SearchCep: SearchCepService) { }
 
   ngOnInit(): void {
 
@@ -111,30 +113,16 @@ export class DataFormComponent implements OnInit {
   }
 
   searchCep(){
-    console.log('data')
+
     let cep = this.form.get('address.cep')?.value
 
-    //Nova variável "cep" somente com dígitos.
-    cep = cep.replace(/\D/g, '');
-
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      if(validacep.test(cep)) {
-
-        this.resetFormData();
-
-        this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe(
-          data => {this.fillFields(data)
-          console.log(data)
-          });
-
-      }
-
+    if (cep != null && cep !== ''){
+      this.SearchCep.ConsultCEP(cep).subscribe(
+        data => {this.fillFields(data)
+        console.log(data)
+        });
     }
+
 
   }
 
