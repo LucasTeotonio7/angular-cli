@@ -30,4 +30,11 @@ export class DropdownService {
     ]
   }
 
+  getNewsLetter(){
+    return [
+      {value: 's', desc: 'Sim'},
+      {value: 'n', desc: 'Não'}
+    ]
+  }
+
 }

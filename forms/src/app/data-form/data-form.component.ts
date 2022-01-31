@@ -18,6 +18,7 @@ export class DataFormComponent implements OnInit {
   states!: Observable <StatesBr[]>;
   levels!: any[];
   languages!: any[];
+  newsletterOp!: any[];
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -30,6 +31,7 @@ export class DataFormComponent implements OnInit {
     this.states = this.DropdownService.getStatesBr();
     this.levels = this.DropdownService.getLevels();
     this.languages = this.DropdownService.getLanguages();
+    this.newsletterOp = this.DropdownService.getNewsLetter();
 
     // this.form = new ForGroup({
     //   name: new FormControl(null),
@@ -59,7 +61,8 @@ export class DataFormComponent implements OnInit {
       // [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
 
       level: [null],
-      language: [null]
+      language: [null],
+      newsletter: ['s']
 
     })
 
