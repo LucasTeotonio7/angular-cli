@@ -98,6 +98,18 @@
 
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="checkbox">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input is-invalid" type="checkbox" id="terms" formControlName="terms"
+            value="option1" [ngClass]="ApplyErrorClass('terms')">
+            <label class="form-check-label" for="terms">Aceito os Termos.</label>
+            <div class="invalid-feedback">Por favor, aceite os termos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
     <button type="submit" (click)="reset()" class="btn btn-secondary">Cancelar</button>

@@ -62,7 +62,8 @@ export class DataFormComponent implements OnInit {
 
       level: [null],
       language: [null],
-      newsletter: ['s']
+      newsletter: ['s'],
+      terms: [false, Validators.pattern('true')]
 
     })
 
