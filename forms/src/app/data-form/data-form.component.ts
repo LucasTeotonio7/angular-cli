@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
@@ -19,6 +19,8 @@ export class DataFormComponent implements OnInit {
   levels!: any[];
   languages!: any[];
   newsletterOp!: any[];
+
+  frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -63,13 +65,39 @@ export class DataFormComponent implements OnInit {
       level: [null],
       language: [null],
       newsletter: ['s'],
-      terms: [false, Validators.pattern('true')]
+      terms: [false, Validators.pattern('true')],
+
+      frameworks: this.buildFrameworks()
 
     })
 
-
   }
+
+  buildFrameworks(){
+
+    const values = this.frameworks.map(v => new FormControl(false));
+    return this.FormBuilder.array(values);
+
+    // this.FormBuilder.array ([
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    // ])
+  }
+
   onSubmit(){
+    console.log(this.form.value);
+
+    let valueSubmit = Object.assign({}, this.form.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+      .map((v:any, i:any) => v ? this.frameworks[i] : null)
+      .filter((v:any) => v !== null)
+    });
+    console.log(valueSubmit);
+
     if (this.form.valid){
       this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
       data => {
@@ -195,6 +223,10 @@ export class DataFormComponent implements OnInit {
 
   compareLevel(obj1: any, obj2: any) {
     return obj1 && obj2 ? (obj1.id === obj2.id && obj1.level === obj2.level) : obj1 === obj2;
+  }
+
+  getFrameworks(): FormArray{
+    return this.form.get('frameworks') as FormArray;
   }
 
 }

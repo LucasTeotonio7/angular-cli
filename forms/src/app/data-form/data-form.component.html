@@ -110,6 +110,23 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="frameworks" class="control-label">Frameworks</label>
+        <div class="frameworks" id="frameworks">
+
+          <div class="form-check form-check-inline" formArrayName="frameworks"
+          *ngFor="let item of getFrameworks()?.controls; let i = index;">
+            <input class="form-check-input is-invalid" type="checkbox" formControlName="frameworks"
+            value="option1" [ngClass]="ApplyErrorClass('frameworks')" [formControlName]="i">
+            <label>{{ frameworks[i] }}</label>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
     <button type="submit" (click)="reset()" class="btn btn-secondary">Cancelar</button>
