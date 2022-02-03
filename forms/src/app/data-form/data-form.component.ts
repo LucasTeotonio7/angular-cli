@@ -5,6 +5,7 @@ import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
 import { SearchCepService } from '../shared/services/search-cep.service';
 import { Observable } from 'rxjs';
+import { FormValidations } from '../shared/form-validators';
 
 @Component({
   selector: 'app-data-form',
@@ -21,6 +22,8 @@ export class DataFormComponent implements OnInit {
   newsletterOp!: any[];
 
   frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
+
+  cepMsgError = 'CEP Obrigatório!';
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -52,7 +55,7 @@ export class DataFormComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
 
       address: this.FormBuilder.group({
-        cep: [null, Validators.required],
+        cep: [null, [Validators.required, FormValidations.cepValidator]],
         number: [null, Validators.required],
         complement: [null],
         street: [null, Validators.required],
@@ -76,7 +79,7 @@ export class DataFormComponent implements OnInit {
   buildFrameworks(){
 
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.FormBuilder.array(values, this.minSelectedCheckboxes(1));
+    return this.FormBuilder.array(values, FormValidations.minSelectedCheckboxes(1));
 
     // this.FormBuilder.array ([
     //   new FormControl(false),
@@ -84,21 +87,6 @@ export class DataFormComponent implements OnInit {
     //   new FormControl(false),
     //   new FormControl(false),
     // ])
-  }
-
-  minSelectedCheckboxes(min:number = 1) {
-    const validator: ValidatorFn = (formArray: AbstractControl) => {
-      if (formArray instanceof FormArray) {
-        const totalSelected = formArray.controls
-          .map((control) => control.value)
-          .reduce((prev, next) => (next ? prev + next : prev), 0);
-        return totalSelected >= min ? null : { required: true };
-      }
-
-      throw new Error('formArray is not an instance of FormArray');
-    };
-
-    return validator;
   }
 
   onSubmit(){
@@ -148,6 +136,21 @@ export class DataFormComponent implements OnInit {
 
   checkTouched(field: string){
     return !this.form.get(field)?.valid && (this.form.get(field)?.touched || this.form.get(field)?.dirty);
+  }
+
+  checkCepMsgError(field: string){
+    console.log(this.form.get(field)?.hasError('required'))
+    if(this.form.get(field)?.hasError('required')){
+      this.cepMsgError = 'CEP Obrigatório!'
+    }
+    else if(this.form.get(field)?.hasError('InvalidCep')){
+      this.cepMsgError =  'CEP inválido!'
+    }
+  }
+
+  ApplyErrorCepClass(field: string){
+    this.checkCepMsgError(field);
+    return { 'is-invalid': this.checkTouched(field) };
   }
 
   checkInvalidEmail(){

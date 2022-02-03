@@ -21,8 +21,8 @@
         <div class="col-md-3 mt-2">
           <label for="cep" class="control-label">CEP</label>
           <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.cep')" id="cep"
-          formControlName="cep" (blur)="searchCep()">
-          <div class="invalid-feedback">CEP Obrigatório!</div>
+          formControlName="cep" (blur)="searchCep()" (ngModelChange)="checkCepMsgError('address.cep')">
+          <div class="invalid-feedback">{{ cepMsgError }}</div>
         </div>
 
         <div class="col-md-3 mt-2">
