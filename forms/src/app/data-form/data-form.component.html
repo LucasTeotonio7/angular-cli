@@ -120,6 +120,7 @@
             <input class="form-check-input is-invalid" type="checkbox" formControlName="frameworks"
             value="option1" [ngClass]="ApplyErrorClass('frameworks')" [formControlName]="i">
             <label>{{ frameworks[i] }}</label>
+            <div class="invalid-feedback" [ngClass]="ApplyErrorClass('frameworks')">Selecione uma opção</div>
           </div>
 
         </div>
