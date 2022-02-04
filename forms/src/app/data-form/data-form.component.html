@@ -11,6 +11,13 @@
       <label for="email" class="control-label">Email</label>
       <input type="email" class="form-control" id="email"
       formControlName="email" [ngClass]="ApplyErrorClass('email')">
+      <div class="invalid-feedback">{{ checkInvalidEmail("Email Obrigatório") }}</div>
+    </div>
+
+    <div class="col-md-12 mt-2">
+      <label for="confirmEmail" class="control-label">Confirmar Email</label>
+      <input type="confirmEmail" class="form-control" id="confirmEmail"
+      formControlName="confirmEmail" [ngClass]="ApplyErrorClass('confirmEmail')">
       <div class="invalid-feedback">{{ checkInvalidEmail() }}</div>
     </div>
 

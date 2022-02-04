@@ -53,6 +53,7 @@ export class DataFormComponent implements OnInit {
     this.form = this.FormBuilder.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
+      confirmEmail: [null, [FormValidations.equalsTo('email')]],
 
       address: this.FormBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
@@ -153,16 +154,19 @@ export class DataFormComponent implements OnInit {
     return { 'is-invalid': this.checkTouched(field) };
   }
 
-  checkInvalidEmail(){
+  checkInvalidEmail(msg: string = ''){
 
     let FieldEmail = this.form.get('email');
 
+    if(this.form.get('confirmEmail')?.hasError('equalsTo')){
+      return "Emails não são iguais!"
+    }
     if(FieldEmail?.errors){
       if (FieldEmail.errors['required'] && FieldEmail.touched){
-        return 'Email Obrigatório!'
+        return msg;
       }
       if (FieldEmail.errors['email'] && FieldEmail.touched){
-        return 'Email Inválido!'
+        return 'Email Inválido!';
       }
     }
 
