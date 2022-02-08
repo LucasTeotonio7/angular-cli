@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
 import { SearchCepService } from '../shared/services/search-cep.service';
-import { Observable } from 'rxjs';
 import { FormValidations } from '../shared/form-validators';
+import { CheckEmailService } from './services/check-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -26,6 +30,7 @@ export class DataFormComponent implements OnInit {
   cepMsgError = 'CEP Obrigatório!';
 
   constructor(
+    private checkEmailService: CheckEmailService,
     private FormBuilder: FormBuilder,
     private http: HttpClient,
     private DropdownService: DropdownService,
@@ -38,6 +43,7 @@ export class DataFormComponent implements OnInit {
     this.languages = this.DropdownService.getLanguages();
     this.newsletterOp = this.DropdownService.getNewsLetter();
 
+    // this.checkEmailService.checkEmail('email3@email.com').subscribe()
     // this.form = new ForGroup({
     //   name: new FormControl(null),
     //   email: new FormControl(null)
@@ -52,7 +58,7 @@ export class DataFormComponent implements OnInit {
 
     this.form = this.FormBuilder.group({
       name: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email, this.validateEmail.bind(this)]],
       confirmEmail: [null, [FormValidations.equalsTo('email')]],
 
       address: this.FormBuilder.group({
@@ -168,6 +174,17 @@ export class DataFormComponent implements OnInit {
       if (FieldEmail.errors['email'] && FieldEmail.touched){
         return 'Email Inválido!';
       }
+      // if(FieldEmail.status === 'PENDING'){
+      //   return 'Validando Email ...'
+      // }
+      // if(FieldEmail.status === 'VALID'){
+      //   return 'Email válido!'
+      // }
+      // console.log(FieldEmail?.hasError('invalidEmail'))
+      if(FieldEmail?.hasError('invalidEmail')){
+        console.log('entrou')
+        return "Email já cadastrado!"
+      }
     }
 
     return '';
@@ -250,5 +267,16 @@ export class DataFormComponent implements OnInit {
   getFrameworks(): FormArray{
     return this.form.get('frameworks') as FormArray;
   }
+
+  validateEmail(formControl: FormControl){
+    console.log(formControl.value)
+    return this.checkEmailService.checkEmail(formControl.value).pipe(
+      map(emailExists => emailExists ? { invalidEmail: true } : null));
+  }
+
+  // validarEmail(formControl: FormControl) {
+  //   return this.verificaEmailService.verificarEmail(formControl.value)
+  //     .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
+  // }
 
 }
