@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { EMPTY, empty, Observable } from 'rxjs';
+import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 
 import { DropdownService } from '../shared/services/dropdown.service';
 import { StatesBr } from '../shared/models/states-br.model';
@@ -80,6 +80,17 @@ export class DataFormComponent implements OnInit {
       frameworks: this.buildFrameworks()
 
     })
+
+    this.form.get('address.cep')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap(value => console.log('status do CEP: '+value)),
+        switchMap(status => status === 'VALID' ?
+          this.SearchCep.ConsultCEP(this.form.get('address.cep')?.value)
+          : EMPTY
+        )
+      )
+      .subscribe(data => data ? this.fillFields(data) : {})
 
   }
 
