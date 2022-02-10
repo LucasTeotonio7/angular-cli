@@ -290,4 +290,10 @@ export class DataFormComponent implements OnInit {
   //     .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
   // }
 
+
+  convertToFormControl(absCtrl: AbstractControl | null): FormControl {
+    const ctrl = absCtrl as FormControl;
+    return ctrl;
+  }
+
 }

@@ -4,7 +4,7 @@
       <label for="name" class="control-label">Nome</label>
       <input type="text" class="form-control" id="name"
       formControlName="name" [ngClass]="ApplyErrorClass('name')">
-      <div class="invalid-feedback">Nome Obrigatório!</div>
+      <app-error-msg [control]="convertToFormControl(form.get('name'))" label="Nome"></app-error-msg>
     </div>
 
     <div class="col-md-12 mt-2">
@@ -36,7 +36,7 @@
           <label for="number" class="control-label">Número</label>
           <input type="text" class="form-control" [ngClass]="ApplyErrorClass('address.number')" id="number"
           formControlName="number">
-          <div class="invalid-feedback">Número Obrigatório!</div>
+          <app-error-msg [control]="convertToFormControl(form.get('address.number'))" label="Número"></app-error-msg>
         </div>
 
         <div class="col-md-6 mt-2">
