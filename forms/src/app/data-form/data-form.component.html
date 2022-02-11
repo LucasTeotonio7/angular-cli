@@ -1,11 +1,16 @@
 <form  class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <div class="col-md-12 mt-2">
+    <app-input-field class="col-md-12 mt-2" formControlName="name"
+      [classCss]="ApplyErrorClass('name')" id="name" label="Nome"
+      [control]="convertToFormControl(form.get('name'))"
+    ></app-input-field>
+
+    <!-- <div class="col-md-12 mt-2">
       <label for="name" class="control-label">Nome</label>
       <input type="text" class="form-control" id="name"
       formControlName="name" [ngClass]="ApplyErrorClass('name')">
       <app-error-msg [control]="convertToFormControl(form.get('name'))" label="Nome"></app-error-msg>
-    </div>
+    </div> -->
 
     <div class="col-md-12 mt-2">
       <label for="email" class="control-label">Email</label>

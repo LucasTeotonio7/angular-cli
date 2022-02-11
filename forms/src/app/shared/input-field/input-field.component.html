@@ -1,0 +1,6 @@
+<div class="col-md-12 mt-2">
+    <label [attr.for]="id" class="control-label">{{ label }}</label>
+    <input [type]="type" class="form-control" [id]="id" [ngClass]="classCss"
+    [readonly] = "!!isReadOnly" [(ngModel)]="value" (blur)="onTouchedCb($event)">
+    <app-error-msg [control]="control" [label]="label"></app-error-msg>
+</div>
