@@ -10,15 +10,15 @@ import { StatesBr } from '../shared/models/states-br.model';
 import { SearchCepService } from '../shared/services/search-cep.service';
 import { FormValidations } from '../shared/form-validators';
 import { CheckEmailService } from './services/check-email.service';
+import { BaseFormComponent } from '../shared/base-form/base-form.component';
 
 @Component({
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.css']
 })
-export class DataFormComponent implements OnInit {
+export class DataFormComponent extends BaseFormComponent implements OnInit {
 
-  form!: FormGroup;
   // states!: StatesBr [];
   states!: Observable <StatesBr[]>;
   levels!: any[];
@@ -34,7 +34,9 @@ export class DataFormComponent implements OnInit {
     private FormBuilder: FormBuilder,
     private http: HttpClient,
     private DropdownService: DropdownService,
-    private SearchCep: SearchCepService) { }
+    private SearchCep: SearchCepService) {
+      super();
+    }
 
   ngOnInit(): void {
 
@@ -107,8 +109,7 @@ export class DataFormComponent implements OnInit {
     // ])
   }
 
-  onSubmit(){
-    console.log(this.form.value);
+  submit() {
 
     let valueSubmit = Object.assign({}, this.form.value);
 
@@ -117,43 +118,16 @@ export class DataFormComponent implements OnInit {
       .map((v:any, i:any) => v ? this.frameworks[i] : null)
       .filter((v:any) => v !== null)
     });
-    console.log(valueSubmit);
 
-    if (this.form.valid){
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value)).subscribe(
       data => {
-        console.log(data);
         // reset form
         this.reset();
       },
       (error: any) =>{
         alert('erro');
-      });
-    } else{
-      this.checkFormValid(this.form)
-    }
-  }
-
-  checkFormValid(formGroup: FormGroup){
-    Object.keys(formGroup.controls).forEach(field => {
-      console.log(field)
-      const control = formGroup.get(field)
-      control?.markAsTouched();
-
-      if(control instanceof FormGroup){
-        this.checkFormValid(control)
-      }
-
     });
-  }
 
-
-  reset(){
-    this.form.reset();
-  }
-
-  checkTouched(field: string){
-    return !this.form.get(field)?.valid && (this.form.get(field)?.touched || this.form.get(field)?.dirty);
   }
 
   checkCepMsgError(field: string){
@@ -199,10 +173,6 @@ export class DataFormComponent implements OnInit {
     }
 
     return '';
-  }
-
-  ApplyErrorClass(field: string){
-    return { 'is-invalid': this.checkTouched(field) };
   }
 
   searchCep(){
