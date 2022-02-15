@@ -68,15 +68,22 @@
           <div class="invalid-feedback">Bairro Obrigatório!</div>
         </div>
 
-        <div class="col-md-4 mt-2">
+        <!-- <div class="col-md-4 mt-2">
           <label for="city" class="control-label">Cidade</label>
           <input type="text" class="form-control" id="city" formControlName="city">
+        </div> -->
+
+        <div class="col-md-2 mt-2">
+          <label for="city" class="control-label">Cidades</label>
+          <select class="form-control" id="city" formControlName="city">
+            <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+          </select>
         </div>
 
         <div class="col-md-2 mt-2">
           <label for="state" class="control-label">Estado</label>
           <select class="form-control" id="state" formControlName="state">
-            <option *ngFor="let state of states | async" [value]="state.sigla">{{ state.nome }}</option>
+            <option *ngFor="let state of states" [value]="state.sigla">{{ state.nome }}</option>
           </select>
         </div>
 

@@ -11,6 +11,7 @@ import { SearchCepService } from '../shared/services/search-cep.service';
 import { FormValidations } from '../shared/form-validators';
 import { CheckEmailService } from './services/check-email.service';
 import { BaseFormComponent } from '../shared/base-form/base-form.component';
+import { City } from '../shared/models/city.model';
 
 @Component({
   selector: 'app-data-form',
@@ -19,8 +20,9 @@ import { BaseFormComponent } from '../shared/base-form/base-form.component';
 })
 export class DataFormComponent extends BaseFormComponent implements OnInit {
 
-  // states!: StatesBr [];
-  states!: Observable <StatesBr[]>;
+  states!: StatesBr [];
+  cities!: City [];
+  // states!: Observable <StatesBr[]>;
   levels!: any[];
   languages!: any[];
   newsletterOp!: any[];
@@ -40,7 +42,10 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.states = this.DropdownService.getStatesBr();
+    // this.states = this.DropdownService.getStatesBr();
+    this.DropdownService.getStatesBr().subscribe(
+      data => this.states = data
+    );
     this.levels = this.DropdownService.getLevels();
     this.languages = this.DropdownService.getLanguages();
     this.newsletterOp = this.DropdownService.getNewsLetter();
@@ -93,6 +98,21 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
         )
       )
       .subscribe(data => data ? this.fillFields(data) : {})
+
+
+    // this.DropdownService.getCities(8).subscribe(data=>{
+    //   console.log(data)
+    // })
+
+    this.form.get('address.state')?.valueChanges
+      .pipe(
+        tap(state => console.log('novo estado: ',state)),
+        map(state => this.states.filter(e => e.sigla === state)),
+        map(states => states && this.states.length > 0 ? states[0].id : 0),
+        switchMap((idState:number) => this.DropdownService.getCities(idState)),
+        tap(console.log)
+      )
+      .subscribe(cities => this.cities = cities);
 
   }
 
