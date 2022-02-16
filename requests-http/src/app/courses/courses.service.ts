@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http'
 import { tap } from 'rxjs/operators'
 
 import { Course } from './course.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  private readonly API = 'http://localhost:3000/courses';
+  private readonly API = `${environment.API}courses`;
 
   constructor(private http: HttpClient) { }
 
