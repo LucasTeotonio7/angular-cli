@@ -1,3 +1,14 @@
 button{
     margin-right: 5px;
 }
+
+.loading{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.span-loading {
+  margin-left: 20px;
+}

@@ -50,17 +50,17 @@ export class CoursesListComponent implements OnInit {
       );
 
 
-      this.courseService.list().subscribe(
-        data=>{
-          console.log(data)
-        },
-        error=>{
-          console.error(error)
-        },
-        ()=>{
-          console.log('Observable Complete!')
-        }
-      );
+      // this.courseService.list().subscribe(
+      //   data=>{
+      //     console.log(data)
+      //   },
+      //   error=>{
+      //     console.error(error)
+      //   },
+      //   ()=>{
+      //     console.log('Observable Complete!')
+      //   }
+      // );
   }
 
   handleError(){
