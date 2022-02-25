@@ -7,6 +7,30 @@
     {
       "id": 2,
       "name": "Java"
+    },
+    {
+      "name": "Python",
+      "id": 3
+    },
+    {
+      "name": "Ruby",
+      "id": 4
+    },
+    {
+      "name": "C++",
+      "id": 5
+    },
+    {
+      "name": "React",
+      "id": 6
+    },
+    {
+      "name": "Vue",
+      "id": 7
+    },
+    {
+      "name": "Html",
+      "id": 8
     }
   ]
 }
