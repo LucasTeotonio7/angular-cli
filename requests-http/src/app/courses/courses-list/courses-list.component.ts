@@ -1,13 +1,12 @@
-import { AlertModalService } from './../../shared/alert-modal.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { Course } from '../course.model';
 import { CoursesService } from '../courses.service';
-import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { AlertModalService } from './../../shared/alert-modal.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -25,7 +24,9 @@ export class CoursesListComponent implements OnInit {
 
   constructor(
     private courseService: CoursesService,
-    private alertService: AlertModalService
+    private alertService: AlertModalService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,10 @@ export class CoursesListComponent implements OnInit {
 
 
 
+  }
+
+  OnEdit(id: number){
+    this.router.navigate(['update', id], { relativeTo: this.route });
   }
 
   onRefresh(){

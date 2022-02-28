@@ -1,9 +1,13 @@
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
+import { map, switchMap } from 'rxjs/operators';
+
 import { AlertModalService } from './../../shared/alert-modal.service';
 import { CoursesService } from '../courses.service';
+import { Course } from '../course.model';
 
 @Component({
   selector: 'app-courses-form',
@@ -20,10 +24,43 @@ export class CoursesFormComponent implements OnInit {
     private courseService: CoursesService,
     private alertService: AlertModalService,
     private location: Location,
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit(): void {
+
+    // this.route.params.subscribe(
+    //   (params: any) => {
+    //     const id = params['id'];
+    //     console.log(id);
+    //     const course$ = this.courseService.loadById(id);
+    //     course$.subscribe((course: any) =>{
+    //       this.updateForm(course)
+    //       console.log(course);
+    //     })
+    //   }
+    // )
+
+    this.route.params
+    .pipe(
+      map((params: any)=> params['id']),
+      switchMap(id => this.courseService.loadById(id))
+      // switchMap (course => getLessons)
+    )
+    .subscribe(
+      (course: any) => {
+          this.updateForm(course);
+          console.log(course);
+      }
+    )
+
+    // concatMap -> Ordem da requisição importa.
+    // mergeMap -> Ordem não importa.
+    // exhaustMap -> Caso de login (aguarda a resposta ...)
+
+
     this.form = this.fb.group({
+      id: [null],
       name: [null,
         [
         Validators.required,
@@ -31,6 +68,13 @@ export class CoursesFormComponent implements OnInit {
         Validators.maxLength(250)
       ]]
     });
+  }
+
+  updateForm(course: Course){
+    this.form.patchValue({
+      id: course.id,
+      name: course.name
+    })
   }
 
   hasError(field: string){
@@ -76,6 +120,7 @@ export class CoursesFormComponent implements OnInit {
   onCancel(){
     this.submitted = false;
     this.form.reset;
+    this.location.back();
   }
 
 }

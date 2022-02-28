@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { tap, delay, take } from 'rxjs/operators'
+import { HttpClient } from '@angular/common/http';
+import { tap, delay, take } from 'rxjs/operators';
 
 import { Course } from './course.model';
 import { environment } from 'src/environments/environment';
@@ -20,6 +20,10 @@ export class CoursesService {
         delay(500),
         tap(console.log)
       );
+  }
+
+  loadById(id: number){
+    return this.http.get(`${this.API}/${id}`).pipe(take(1))
   }
 
   create(course: Course){
