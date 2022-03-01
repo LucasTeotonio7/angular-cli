@@ -25,24 +25,8 @@
       "id": 6
     },
     {
-      "name": "Vue",
-      "id": 7
-    },
-    {
-      "name": "Html",
-      "id": 8
-    },
-    {
-      "id": 9,
-      "name": "Php"
-    },
-    {
       "id": 10,
       "name": "Flutter"
-    },
-    {
-      "id": 11,
-      "name": "Javascript"
     }
   ]
 }

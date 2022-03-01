@@ -23,7 +23,7 @@ export class CoursesService {
   }
 
   loadById(id: number){
-    return this.http.get<Course>(`${this.API}/${id}`).pipe(take(1))
+    return this.http.get<Course>(`${this.API}/${id}`).pipe(take(1));
   }
 
   private create(course: Course){
@@ -31,14 +31,18 @@ export class CoursesService {
   }
 
   private update(course: Course){
-    return this.http.put(`${this.API}/${course.id}`, course).pipe(take(1))
+    return this.http.put(`${this.API}/${course.id}`, course).pipe(take(1));
   }
 
   save(course: Course){
     if (course.id){
-      return this.update(course)
+      return this.update(course);
     }
-    return this.create(course)
+    return this.create(course);
+  }
+
+  delete(id: number){
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
   }
 
 }
