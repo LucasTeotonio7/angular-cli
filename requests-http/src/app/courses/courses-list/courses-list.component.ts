@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { EMPTY, Observable, Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, take, switchMap } from 'rxjs/operators';
 
 import { Course } from '../course.model';
 import { CoursesService } from '../courses.service';
@@ -52,8 +52,22 @@ export class CoursesListComponent implements OnInit {
 
   onDelete(id: number){
     this.selectedCourse = id;
-    this.deleteModalRef = this.modalService.show(
-      this.deleteModal, {class: 'modal-sm'});
+    // this.deleteModalRef = this.modalService.show(
+    //   this.deleteModal, {class: 'modal-sm'});
+    const $result = this.alertService.showConfirm('Confirmação', "Tem certeza que deseja remover esse curso?")
+    $result.asObservable()
+    .pipe(
+      take(1),
+      switchMap(result => result ? this.courseService.delete(id): EMPTY)
+    )
+    .subscribe(
+      success => {
+        this.onRefresh();
+      },
+      error => {this.alertService.showAlertDanger(
+        "Ocorreu um erro ao deletar o curso!")
+      },
+    )
   }
 
   onConfirmDelete(): void {
