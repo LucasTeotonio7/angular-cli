@@ -7,6 +7,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { AlertModalService } from './../../shared/alert-modal.service';
 import { CoursesService } from '../courses.service';
+import { Courses2Service } from '../courses2.service';
 import { Course } from '../course.model';
 
 @Component({
@@ -21,7 +22,7 @@ export class CoursesFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private courseService: CoursesService,
+    private courseService: Courses2Service,
     private alertService: AlertModalService,
     private location: Location,
     private route: ActivatedRoute,

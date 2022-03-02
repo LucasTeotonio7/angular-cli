@@ -7,6 +7,7 @@ import { catchError, take, switchMap } from 'rxjs/operators';
 
 import { Course } from '../course.model';
 import { CoursesService } from '../courses.service';
+import { Courses2Service } from '../courses2.service';
 import { AlertModalService } from './../../shared/alert-modal.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class CoursesListComponent implements OnInit {
   selectedCourse!: number;
 
   constructor(
-    private courseService: CoursesService,
+    private courseService: Courses2Service,
     private modalService: BsModalService,
     private alertService: AlertModalService,
     private router: Router,
