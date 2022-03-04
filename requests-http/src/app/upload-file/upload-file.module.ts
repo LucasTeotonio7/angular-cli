@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { UploadFileRoutingModule } from './upload-file-routing.module';
 import { UploadFileComponent } from './upload-file.component';
@@ -11,7 +12,8 @@ import { UploadFileComponent } from './upload-file.component';
   ],
   imports: [
     CommonModule,
-    UploadFileRoutingModule
+    UploadFileRoutingModule,
+    FormsModule
   ]
 })
 export class UploadFileModule { }
