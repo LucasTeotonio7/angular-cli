@@ -10,13 +10,13 @@ app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({ extended: true }))
 
 // TODO: CORS
-const corsOptions = {
-  origin: '*',
-  optionSuccessStatus: 200,
+// const corsOptions = {
+//   origin: '*',
+//   optionSuccessStatus: 200,
 
-};
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // TODO: MULTIPART
 const multipartMiddleware = multipart({ uploadDir: './uploads' });
