@@ -20,11 +20,14 @@
   </div>
 </div>
 
-<button
-  class="btn btn-primary"
-  type="button"
-  [disabled]="!files"
-  (click)="onUpload()"
->
+<button class="btn btn-primary" type="button" [disabled]="!files" (click)="onUpload()">
   Salvar Arquivo
+</button>
+
+<button class="btn btn-primary ml-3" type="button" (click)="onDownloadExcel()">
+  Download Excel
+</button>
+
+<button class="btn btn-primary" type="button" (click)="onDownloadPdf()">
+  Download PDF
 </button>
