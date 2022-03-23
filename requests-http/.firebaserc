@@ -1,4 +1,13 @@
 {
+  "targets": {
+    "curso-angular-loiane-c3cf6": {
+      "hosting": {
+        "requests-http": [
+          "curso-angular-loiane-c3cf6"
+        ]
+      }
+    }
+  },
   "projects": {
     "default": "curso-angular-loiane-c3cf6"
   }

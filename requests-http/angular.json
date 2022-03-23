@@ -128,6 +128,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "requests-http:build:production",
+            "firebaseProject": "curso-angular-loiane-c3cf6",
+            "firebaseHostingSite": "curso-angular-loiane-c3cf6"
+          }
         }
       }
     }
